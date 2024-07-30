@@ -3,31 +3,16 @@
 
 echo '🏗️👷 Styling, testing and building your project before committing'
 
-# Check Prettier standards
-npm run format ||
+npx lint-staged || 
 (
-    echo 'Prettier Check Failed. Run npm run format or yarn format, add changes and try commit again.';
-    false;
+    echo 'Lint Staged failed. Make the required changes listed above, add changes and try to commit again.'
+    false; 
 )
 
-# Check ESLint Standards
-npm run lint ||
-(
-        echo 'ESLint Check Failed. Make the required changes listed above, add changes and try to commit again.'
-        false; 
-)
-
-
-# If everything passes... Now we can commit
-echo 'Alright, Code looks good Trying to test now.'
-
-# Check Tests
 npm run test ||
 (
-        echo ' Tests failed!  
-                Please fix any failing tests and try to commit again.'
-        false; 
+    echo 'Tests failed. Make the required changes listed above, add changes and try to commit again.'
+    false; 
 )
-
 
 echo '✅✅✅✅ Everything looks good! ✅✅✅✅'
