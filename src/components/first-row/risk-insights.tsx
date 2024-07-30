@@ -1,83 +1,37 @@
-import { Box, Card, CardContent, Typography } from '@mui/material';
+import { Box, CardContent } from '@mui/material';
 import { Heading } from '../shared';
+import { RiskBox } from '.';
+
+const riskData = [
+  {
+    title: 'RISK SCORE',
+    score: 39,
+    subtitle: 'OUT OF 100',
+    label: 'Low',
+  },
+  {
+    title: 'SCORE CHANGE',
+    score: '5%',
+    subtitle: 'PAST 30 DAYS',
+    label: 'Decreased',
+  },
+];
 
 const RiskInsights = () => {
   return (
     <Box>
       <Heading heading="Risk Insights" />
-      <Box
-        sx={{
-          color: '#fff',
-          borderRadius: 3,
-          position: 'relative',
-        }}>
+      <Box sx={{ color: '#fff', borderRadius: 3, position: 'relative' }}>
         <CardContent>
-          <Box
-            sx={{
-              height: 150,
-              width: 150,
-              border: '1px solid #00b0f0',
-              borderRadius: 2,
-              p: 2,
-              mb: 2,
-              textAlign: 'center',
-              position: 'relative',
-            }}>
-            <Typography sx={{ fontSize: 12 }}>RISK SCORE</Typography>
-            <Box sx={{ pt: '10px' }}>
-              <Box sx={{ fontWeight: 'bold', fontSize: 56 }}>39</Box>
-              <Typography sx={{ fontSize: 12 }}>OUT OF 100</Typography>
-            </Box>
-            <Box
-              sx={{
-                mx: 2,
-                bgcolor: '#00b0f0',
-                color: 'black',
-                fontWeight: 'medium',
-                borderRadius: '8px 8px 0 0', // Round the bottom corners
-                p: 0.01,
-                textAlign: 'center',
-                position: 'absolute',
-                left: 0,
-                right: 0,
-                bottom: 0,
-              }}>
-              Low
-            </Box>
-          </Box>
-          <Box
-            sx={{
-              height: 150,
-              width: 150,
-              border: '1px solid #00b0f0',
-              borderRadius: 2,
-              p: 2,
-              mb: 2,
-              textAlign: 'center',
-              position: 'relative',
-            }}>
-            <Typography sx={{ fontSize: 12 }}>SCORE CHANGE</Typography>
-            <Box sx={{ pt: '10px' }}>
-              <Box sx={{ fontWeight: 'bold', fontSize: 56 }}>5%</Box>
-              <Typography sx={{ fontSize: 12 }}>PAST 30 DAYS</Typography>
-            </Box>
-            <Box
-              sx={{
-                mx: 2,
-                bgcolor: '#00b0f0',
-                color: 'black',
-                fontWeight: 'medium',
-                borderRadius: '8px 8px 0 0', // Round the bottom corners
-                p: 0.01,
-                textAlign: 'center',
-                position: 'absolute',
-                left: 0,
-                right: 0,
-                bottom: 0,
-              }}>
-              Decreased
-            </Box>
-          </Box>
+          {riskData.map((data, index) => (
+            <RiskBox
+              key={index}
+              title={data.title}
+              score={data.score}
+              subtitle={data.subtitle}
+              label={data.label}
+            />
+          ))}
         </CardContent>
       </Box>
     </Box>

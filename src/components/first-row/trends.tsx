@@ -43,7 +43,7 @@ const CustomTooltip: React.FC<CustomTooltipProps> = ({
             backgroundColor: '#ffc107',
             color: 'black',
             padding: '5px',
-            borderRadius: '4px',
+            borderRadius: 5,
             position: 'relative',
             zIndex: 1,
             minWidth: '50px',
@@ -73,7 +73,6 @@ const CustomTooltip: React.FC<CustomTooltipProps> = ({
 };
 
 const Trends = () => {
-  const [count, setCount] = useState(1);
   const [boxHeight, setBoxHeight] = useState(350);
   const chartRef = useRef<HTMLDivElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
@@ -91,7 +90,7 @@ const Trends = () => {
       <Box
         sx={{
           color: '#fff',
-          borderRadius: 3,
+          borderRadius: 5,
           flex: 1,
           display: 'flex',
           flexDirection: 'column',
@@ -108,13 +107,17 @@ const Trends = () => {
               flex: 1,
               display: 'flex',
               flexDirection: 'column',
-              border: '1px solid #00b0f0',
-              borderRadius: 2,
+              border: '2px solid #212121',
+              borderRadius: 5,
               p: 2,
               color: '#fff',
             }}
             ref={chartRef}>
-            <Typography gutterBottom>RISK SCORE OVER TIME</Typography>
+            <Typography
+              gutterBottom
+              sx={{ fontSize: 14, color: '#A2A099', py: '2px' }}>
+              RISK SCORE OVER TIME
+            </Typography>
             <LineChart
               width={600}
               height={boxHeight - 48}
@@ -127,15 +130,7 @@ const Trends = () => {
                 tick={{ fill: '#aaa' }}
               />
               <YAxis tick={{ fill: '#aaa' }} domain={[0, 100]} />
-              <Tooltip
-                content={
-                  <CustomTooltip
-                    active={undefined}
-                    payload={undefined}
-                    label={undefined}
-                  />
-                }
-              />
+              <Tooltip content={<CustomTooltip />} />
               <Legend />
               <Line
                 type="monotone"
@@ -187,7 +182,7 @@ const Trends = () => {
                   flex: 1,
                   overflowY: 'auto',
                 }}>
-                {dashboardData.high_risk_areas.map((area) => (
+                {dashboardData.high_risk_areas.map((area, index) => (
                   <ListItem
                     sx={{
                       display: 'flex',
@@ -198,11 +193,12 @@ const Trends = () => {
                     <Typography
                       sx={{
                         bgcolor: 'transparent',
-                        borderBottom: '2px solid green',
+                        borderBottom: '2px solid #0BC567',
                         mr: 3,
                         ml: 2,
+                        px: 1,
                       }}>
-                      {count}
+                      {index + 1}
                     </Typography>
                     <Typography sx={{ bgcolor: 'transparent' }}>
                       {area.name}
