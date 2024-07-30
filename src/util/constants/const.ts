@@ -343,3 +343,18 @@ export const pieData = {
     },
   ],
 };
+
+export const riskData = [
+  {
+    title: 'RISK SCORE',
+    score: 39,
+    subtitle: 'OUT OF 100',
+    label: 'Low',
+  },
+  {
+    title: 'SCORE CHANGE',
+    score: '5%',
+    subtitle: 'PAST 30 DAYS',
+    label: 'Decreased',
+  },
+];

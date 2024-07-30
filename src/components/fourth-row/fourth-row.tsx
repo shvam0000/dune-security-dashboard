@@ -1,4 +1,3 @@
-//@ts-nocheck
 import React from 'react';
 import { Box, Typography, Grid } from '@mui/material';
 import { Pie, Line } from 'react-chartjs-2';
@@ -8,10 +7,10 @@ import { pieData, riskScoreOverTimeData } from '../../util/constants/const';
 
 Chart.register(...registerables);
 
-const Dashboard: React.FC = () => {
+const FourthRow: React.FC = () => {
   const centerTextPlugin = {
     id: 'centerText',
-    beforeDraw: (chart) => {
+    beforeDraw: (chart: any) => {
       const { ctx, chartArea } = chart;
       const { width, height } = chartArea;
       ctx.save();
@@ -86,7 +85,7 @@ const Dashboard: React.FC = () => {
   return (
     <Box sx={{ color: '#fff', py: 2 }}>
       <Grid container spacing={4}>
-        <Grid item xs={4}>
+        <Grid item xs={12} md={4}>
           <Heading heading="Risk Categories" />
           <Box
             sx={{
@@ -106,13 +105,14 @@ const Dashboard: React.FC = () => {
             <Box sx={{ height: '100%', display: 'flex', alignItems: 'center' }}>
               <Pie
                 data={pieData}
+                //@ts-ignore
                 options={pieOptions}
                 plugins={[centerTextPlugin]}
               />
             </Box>
           </Box>
         </Grid>
-        <Grid item xs={8}>
+        <Grid item xs={12} md={8}>
           <Heading heading="Risk Score Comparison" />
           <Box
             sx={{
@@ -142,6 +142,7 @@ const Dashboard: React.FC = () => {
               HIGHER THAN AVERAGE
             </Typography>
             <Box sx={{ height: '100%', display: 'flex', alignItems: 'center' }}>
+              {/* @ts-ignore */}
               <Line data={riskScoreOverTimeData} options={lineOptions} />
             </Box>
           </Box>
@@ -151,4 +152,4 @@ const Dashboard: React.FC = () => {
   );
 };
 
-export default Dashboard;
+export default FourthRow;

@@ -1,10 +1,7 @@
 import { Box, Typography } from '@mui/material';
 import React from 'react';
 import HelpIcon from '@mui/icons-material/Help';
-
-interface HeadingProps {
-  heading: string;
-}
+import { HeadingProps } from '../../util/props/props';
 
 const Heading: React.FC<HeadingProps> = ({ heading }) => {
   return (

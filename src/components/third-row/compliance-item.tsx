@@ -1,12 +1,6 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
-import { SvgIconComponent } from '@mui/icons-material';
-
-interface ComplianceItemProps {
-  icon: SvgIconComponent;
-  title: string;
-  subtitle: string;
-}
+import { ComplianceItemProps } from '../../util/props/props';
 
 const ComplianceItem: React.FC<ComplianceItemProps> = ({
   icon: Icon,

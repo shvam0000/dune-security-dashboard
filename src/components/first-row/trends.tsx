@@ -18,23 +18,12 @@ import {
   Line,
   ReferenceLine,
 } from 'recharts';
+
 import { dashboardData } from '../../util/data/Dashboard_Dune_Security';
-
 import { Heading } from '../shared';
+import { CustomTooltipProps } from '../../util/props/props';
 
-interface CustomTooltipProps {
-  active?: boolean;
-  payload?: Array<{
-    value: number;
-  }>;
-  label?: string;
-}
-
-const CustomTooltip: React.FC<CustomTooltipProps> = ({
-  active,
-  payload,
-  label,
-}) => {
+const CustomTooltip: React.FC<CustomTooltipProps> = ({ active, payload }) => {
   if (active && payload && payload.length) {
     return (
       <div style={{ position: 'relative', display: 'inline-block' }}>
@@ -111,7 +100,7 @@ const Trends = () => {
               borderRadius: 5,
               p: 2,
               color: '#fff',
-              bgcolor: '#161615', // Background color for the chart area
+              bgcolor: '#161615',
             }}
             ref={chartRef}>
             <Typography

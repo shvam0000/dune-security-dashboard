@@ -1,8 +1,8 @@
-//@ts-nocheck
 import React from 'react';
 import { getSmoothStepPath } from 'reactflow';
+import { CustomEdgeProps } from '../../util/props/props';
 
-const CustomEdge = ({
+const CustomEdge: React.FC<CustomEdgeProps> = ({
   id,
   sourceX,
   sourceY,
@@ -10,8 +10,6 @@ const CustomEdge = ({
   targetX,
   targetY,
   targetPosition,
-  source,
-  target,
   style = {},
   markerEnd,
 }) => {
@@ -24,7 +22,6 @@ const CustomEdge = ({
     targetPosition,
   });
 
-  // Define gradient id for unique identification
   const gradientId = `gradient-${id}`;
 
   return (
