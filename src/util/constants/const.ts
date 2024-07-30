@@ -6,6 +6,7 @@ import LocalHospitalOutlinedIcon from '@mui/icons-material/LocalHospitalOutlined
 import SecurityOutlinedIcon from '@mui/icons-material/SecurityOutlined';
 import FolderOpenOutlinedIcon from '@mui/icons-material/FolderOpenOutlined';
 import HourglassDisabledOutlinedIcon from '@mui/icons-material/HourglassDisabledOutlined';
+import { dashboardData } from '../data/Dashboard_Dune_Security';
 
 export const userInteractions = {
   links_clicked: 2735,
@@ -304,3 +305,41 @@ export const complianceData = [
     subtitle: '34% of users',
   },
 ];
+
+export const riskScoreOverTimeData = {
+  labels: dashboardData.risk_score_over_time.map((item) =>
+    new Date(item.timestamp).toLocaleDateString()
+  ),
+  datasets: [
+    {
+      label: 'Your Risk Score',
+      data: dashboardData.risk_score_over_time.map((item) => item.risk_score),
+      borderColor: '#FF5722',
+      borderWidth: 2,
+      fill: false,
+    },
+    {
+      label: 'Average Risk Score',
+      data: dashboardData.risk_score_over_time.map(() => 60), // Placeholder value
+      borderColor: '#FFC107',
+      borderWidth: 2,
+      fill: false,
+    },
+  ],
+};
+
+export const pieData = {
+  labels: ['Low Risk', 'Moderate Risk', 'High Risk', 'Severe Risk'],
+  datasets: [
+    {
+      data: [
+        dashboardData.risk_categories['Low risk'],
+        dashboardData.risk_categories['Moderate risk'],
+        dashboardData.risk_categories['High risk'],
+        dashboardData.risk_categories['Severe risk'],
+      ],
+      backgroundColor: ['#01BB60', '#FFEA00', '#FFA201', '#FF2A00'], // Custom colors
+      borderWidth: 0,
+    },
+  ],
+};

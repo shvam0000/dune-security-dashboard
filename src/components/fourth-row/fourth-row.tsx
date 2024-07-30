@@ -1,35 +1,14 @@
 //@ts-nocheck
 import React from 'react';
-import { dashboardData } from '../../util/data/Dashboard_Dune_Security';
 import { Box, Typography, Grid } from '@mui/material';
 import { Pie, Line } from 'react-chartjs-2';
 import { Chart, registerables } from 'chart.js';
 import { Heading } from '../shared';
+import { pieData, riskScoreOverTimeData } from '../../util/constants/const';
+
 Chart.register(...registerables);
 
-const Dashboard = () => {
-  const riskScoreOverTimeData = {
-    labels: dashboardData.risk_score_over_time.map((item) =>
-      new Date(item.timestamp).toLocaleDateString()
-    ),
-    datasets: [
-      {
-        label: 'Your Risk Score',
-        data: dashboardData.risk_score_over_time.map((item) => item.risk_score),
-        borderColor: '#FF5722',
-        borderWidth: 2,
-        fill: false,
-      },
-      {
-        label: 'Average Risk Score',
-        data: dashboardData.risk_score_over_time.map(() => 60), // Placeholder value
-        borderColor: '#FFC107',
-        borderWidth: 2,
-        fill: false,
-      },
-    ],
-  };
-
+const Dashboard: React.FC = () => {
   const centerTextPlugin = {
     id: 'centerText',
     beforeDraw: (chart) => {
@@ -46,23 +25,7 @@ const Dashboard = () => {
     },
   };
 
-  const data = {
-    labels: ['Low Risk', 'Moderate Risk', 'High Risk', 'Severe Risk'],
-    datasets: [
-      {
-        data: [
-          dashboardData.risk_categories['Low risk'],
-          dashboardData.risk_categories['Moderate risk'],
-          dashboardData.risk_categories['High risk'],
-          dashboardData.risk_categories['Severe risk'],
-        ],
-        backgroundColor: ['#4CAF50', '#FFEB3B', '#FF9800', '#F44336'],
-        borderWidth: 0,
-      },
-    ],
-  };
-
-  const options = {
+  const pieOptions = {
     responsive: true,
     plugins: {
       legend: {
@@ -137,11 +100,15 @@ const Dashboard = () => {
               flexDirection: 'column',
               justifyContent: 'center',
             }}>
-            <Typography variant="caption" sx={{ color: '#757575', py: 2 }}>
+            <Typography variant="caption" sx={{ color: '#A2A099', py: 2 }}>
               PERCENTAGE OF USERS
             </Typography>
             <Box sx={{ height: '100%', display: 'flex', alignItems: 'center' }}>
-              <Pie data={data} options={options} plugins={[centerTextPlugin]} />
+              <Pie
+                data={pieData}
+                options={pieOptions}
+                plugins={[centerTextPlugin]}
+              />
             </Box>
           </Box>
         </Grid>
@@ -160,9 +127,19 @@ const Dashboard = () => {
               justifyContent: 'center',
             }}>
             <Typography
-              sx={{ px: 2, pb: 1, textAlign: 'left' }}
+              sx={{
+                px: 2,
+                pb: 1,
+                textAlign: 'left',
+                display: 'flex',
+                color: '#A2A099',
+              }}
               variant="body2">
-              Your risk score is <strong>39 points</strong> higher than average
+              YOUR RISK SCORE IS{' '}
+              <Box sx={{ px: 1, color: '#BE331D' }}>
+                <strong> 39 POINTS </strong>
+              </Box>{' '}
+              HIGHER THAN AVERAGE
             </Typography>
             <Box sx={{ height: '100%', display: 'flex', alignItems: 'center' }}>
               <Line data={riskScoreOverTimeData} options={lineOptions} />
