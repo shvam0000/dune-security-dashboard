@@ -3,6 +3,9 @@ import { Box, Card, CardContent, Typography } from '@mui/material';
 const RiskInsights = () => {
   return (
     <Box>
+      <Typography variant="h6" sx={{ color: 'white', pl: 2 }} gutterBottom>
+        Risk Insights
+      </Typography>
       <Card
         sx={{
           bgcolor: '#333',
@@ -11,9 +14,6 @@ const RiskInsights = () => {
           position: 'relative',
         }}>
         <CardContent>
-          <Typography variant="h6" gutterBottom>
-            Risk Insights
-          </Typography>
           <Box
             sx={{
               height: 150,

@@ -73,31 +73,37 @@ const CustomTooltip: React.FC<CustomTooltipProps> = ({
 
 const Trends = () => {
   const [count, setCount] = useState(1);
-  const [chartHeight, setChartHeight] = useState(365);
-  const boxRef = useRef<HTMLDivElement>(null);
+  const [boxHeight, setBoxHeight] = useState(380);
+  const chartRef = useRef<HTMLDivElement>(null);
+  const listRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (boxRef.current) {
-      setChartHeight(boxRef.current.clientHeight - 48); // Subtracting padding
+    if (chartRef.current && listRef.current) {
+      setBoxHeight(
+        Math.max(chartRef.current.clientHeight, listRef.current.clientHeight)
+      );
     }
-  }, []);
+  }, [chartRef, listRef]);
 
   return (
     <Container sx={{ display: 'flex', height: '100%' }}>
-      <Card
+      <Box
         sx={{
           color: '#fff',
           borderRadius: 3,
-          position: 'relative',
-          bgcolor: '#161615',
           flex: 1,
           display: 'flex',
           flexDirection: 'column',
         }}>
-        <CardContent>
-          <Typography variant="h6" gutterBottom>
-            Trends
-          </Typography>
+        <Typography variant="h6" gutterBottom sx={{ pl: 2 }}>
+          Trends
+        </Typography>
+        <CardContent
+          sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+          }}>
           <Box
             sx={{
               flex: 1,
@@ -107,12 +113,12 @@ const Trends = () => {
               borderRadius: 2,
               p: 2,
             }}
-            ref={boxRef}>
+            ref={chartRef}>
             <LineChart
               width={600}
-              height={chartHeight}
+              height={boxHeight - 48}
               data={dashboardData.risk_score_over_time}
-              margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+              margin={{ top: 5, bottom: 5 }}>
               <CartesianGrid horizontal={true} vertical={false} stroke="#555" />
               <XAxis
                 dataKey="timestamp"
@@ -148,71 +154,72 @@ const Trends = () => {
               />
             </LineChart>
           </Box>
-        </CardContent>
-      </Card>
-      <Box
-        sx={{
-          bgcolor: '#161615',
-          border: '1px solid #272725',
-          textAlign: 'center',
-          width: 250,
-          borderRadius: 5,
-          mx: 2,
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-          height: 448,
-        }}>
-        <Box sx={{ bgcolor: 'transparent' }}>
           <Box
             sx={{
-              color: 'white',
               bgcolor: '#161615',
-              py: 2,
+              border: '1px solid #272725',
+              textAlign: 'center',
+              width: 250,
               borderRadius: 5,
-            }}>
-            HIGH RISK AREAS
-          </Box>
-          <List
-            sx={{
-              color: 'white',
-              bgcolor: 'transparent',
-              position: 'relative',
-              flex: 1,
-              overflowY: 'auto',
-            }}>
-            {dashboardData.high_risk_areas.map((area) => (
-              <ListItem
+              ml: 2,
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+              height: boxHeight,
+            }}
+            ref={listRef}>
+            <Box sx={{ bgcolor: 'transparent' }}>
+              <Box
                 sx={{
-                  display: 'flex',
-                  justifyContent: 'evenly',
+                  color: 'white',
                   bgcolor: '#161615',
-                }}
-                key={area.name}>
-                <Typography
-                  sx={{
-                    bgcolor: 'transparent',
-                    borderBottom: '2px solid green',
-                    mr: 3,
-                    ml: 2,
-                  }}>
-                  {count}
-                </Typography>
-                <Typography sx={{ bgcolor: 'transparent' }}>
-                  {area.name}
-                </Typography>
-              </ListItem>
-            ))}
-          </List>
-        </Box>
-        <Typography
-          sx={{
-            bgcolor: 'transparent',
-            color: '#00b0f0',
-            p: 2,
-          }}>
-          Learn about risk areas
-        </Typography>
+                  py: 2,
+                  borderRadius: 5,
+                }}>
+                HIGH RISK AREAS
+              </Box>
+              <List
+                sx={{
+                  color: 'white',
+                  bgcolor: 'transparent',
+                  position: 'relative',
+                  flex: 1,
+                  overflowY: 'auto',
+                }}>
+                {dashboardData.high_risk_areas.map((area) => (
+                  <ListItem
+                    sx={{
+                      display: 'flex',
+                      justifyContent: 'evenly',
+                      bgcolor: '#161615',
+                    }}
+                    key={area.name}>
+                    <Typography
+                      sx={{
+                        bgcolor: 'transparent',
+                        borderBottom: '2px solid green',
+                        mr: 3,
+                        ml: 2,
+                      }}>
+                      {count}
+                    </Typography>
+                    <Typography sx={{ bgcolor: 'transparent' }}>
+                      {area.name}
+                    </Typography>
+                  </ListItem>
+                ))}
+              </List>
+            </Box>
+            <Typography
+              sx={{
+                bgcolor: 'transparent',
+                color: '#00b0f0',
+                p: 2,
+              }}>
+              Learn about risk areas
+            </Typography>
+          </Box>
+        </CardContent>
       </Box>
     </Container>
   );
