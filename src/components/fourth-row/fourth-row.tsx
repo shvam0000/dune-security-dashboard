@@ -16,16 +16,14 @@ const Dashboard = () => {
         label: 'Your Risk Score',
         data: dashboardData.risk_score_over_time.map((item) => item.risk_score),
         borderColor: '#FF5722',
+        borderWidth: 2,
         fill: false,
       },
       {
         label: 'Average Risk Score',
-        data: dashboardData.risk_score_over_time.map(
-          () =>
-            // Calculate average risk score as needed
-            60 // Placeholder value
-        ),
+        data: dashboardData.risk_score_over_time.map(() => 60), // Placeholder value
         borderColor: '#FFC107',
+        borderWidth: 2,
         fill: false,
       },
     ],
@@ -34,18 +32,15 @@ const Dashboard = () => {
   const centerTextPlugin = {
     id: 'centerText',
     beforeDraw: (chart) => {
-      const ctx = chart.ctx;
-      const { width, height } = chart.chartArea;
-      const fontSize = (height / 200).toFixed(2);
+      const { ctx, chartArea } = chart;
+      const { width, height } = chartArea;
       ctx.save();
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.fillStyle = '#757575';
-      ctx.font = `${fontSize}em Arial`;
-      const text = 'TOTAL USERS';
-      const textX = width / 2;
-      const textY = height / 2 + chart.legend.height;
-      ctx.fillText(text, textX, textY);
+      const fontSize = (height / 200).toFixed(2);
+      ctx.font = `bold ${fontSize}em Arial`;
+      ctx.fillText('TOTAL USERS', width / 2, height / 2 + chart.legend.height);
       ctx.restore();
     },
   };
@@ -71,6 +66,10 @@ const Dashboard = () => {
     plugins: {
       legend: {
         display: true,
+        position: 'top',
+        labels: {
+          color: '#fff',
+        },
       },
       tooltip: {
         enabled: true,
@@ -84,11 +83,47 @@ const Dashboard = () => {
     },
   };
 
+  const lineOptions = {
+    responsive: true,
+    plugins: {
+      legend: {
+        display: true,
+        position: 'top',
+        labels: {
+          color: '#fff',
+        },
+      },
+      tooltip: {
+        enabled: true,
+      },
+    },
+    scales: {
+      x: {
+        grid: {
+          display: false,
+          color: '#2D2C2B',
+        },
+        ticks: {
+          color: '#fff',
+        },
+      },
+      y: {
+        grid: {
+          display: true,
+          color: '#757575',
+        },
+        ticks: {
+          color: '#fff',
+        },
+      },
+    },
+  };
+
   return (
     <Box sx={{ color: '#fff', padding: 2 }}>
       <Grid container spacing={4}>
         <Grid item xs={4}>
-          <Typography variant="h6" sx={{ color: '#fff' }}>
+          <Typography variant="h6" gutterBottom sx={{ color: '#fff' }}>
             Risk Categories
           </Typography>
           <Box
@@ -106,12 +141,14 @@ const Dashboard = () => {
           </Box>
         </Grid>
         <Grid item xs={8}>
+          <Typography variant="h6" gutterBottom>
+            Risk Score Comparison
+          </Typography>
+          <Typography variant="body2">
+            Your risk score is <strong>39 points</strong> higher than average
+          </Typography>
           <Box sx={{ textAlign: 'center' }}>
-            <Typography variant="h6">Risk Score Comparison</Typography>
-            <Typography variant="body2">
-              Your risk score is <strong>39 points</strong> higher than average
-            </Typography>
-            <Line data={riskScoreOverTimeData} />
+            <Line data={riskScoreOverTimeData} options={lineOptions} />
           </Box>
         </Grid>
       </Grid>
