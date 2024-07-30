@@ -68,7 +68,7 @@ const Dashboard: React.FC = () => {
           color: '#2D2C2B',
         },
         ticks: {
-          color: '#fff',
+          color: '#A2A099',
         },
       },
       y: {
@@ -77,7 +77,7 @@ const Dashboard: React.FC = () => {
           color: '#757575',
         },
         ticks: {
-          color: '#fff',
+          color: '#A2A099',
         },
       },
     },
@@ -92,7 +92,7 @@ const Dashboard: React.FC = () => {
             sx={{
               textAlign: 'center',
               padding: 2,
-              backgroundColor: '#212121',
+              backgroundColor: '#161615',
               border: '1px solid #424242',
               borderRadius: 5,
               height: '85%',
@@ -120,7 +120,7 @@ const Dashboard: React.FC = () => {
               border: '1px solid #424242',
               p: 2,
               borderRadius: 5,
-              backgroundColor: '#212121',
+              backgroundColor: '#161615',
               height: '85%',
               display: 'flex',
               flexDirection: 'column',

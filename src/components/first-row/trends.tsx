@@ -111,6 +111,7 @@ const Trends = () => {
               borderRadius: 5,
               p: 2,
               color: '#fff',
+              bgcolor: '#161615', // Background color for the chart area
             }}
             ref={chartRef}>
             <Typography
