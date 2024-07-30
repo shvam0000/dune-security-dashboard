@@ -7,6 +7,7 @@ import LocalHospitalOutlinedIcon from '@mui/icons-material/LocalHospitalOutlined
 import SecurityOutlinedIcon from '@mui/icons-material/SecurityOutlined';
 import FolderOpenOutlinedIcon from '@mui/icons-material/FolderOpenOutlined';
 import HourglassDisabledOutlinedIcon from '@mui/icons-material/HourglassDisabledOutlined';
+import { Heading } from '../shared';
 
 const ThirdRow = () => {
   const data = [
@@ -49,9 +50,7 @@ const ThirdRow = () => {
 
   return (
     <Box sx={{ color: '#fff' }}>
-      <Typography variant="h6" gutterBottom sx={{ pl: 2 }}>
-        Compliance
-      </Typography>
+      <Heading heading="Compliance" />
       <Box
         sx={{
           my: 2,

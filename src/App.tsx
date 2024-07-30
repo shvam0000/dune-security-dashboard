@@ -7,7 +7,7 @@ import { ThirdRow } from './components/third-row';
 
 const App = () => {
   return (
-    <Container sx={{ bgcolor: 'black', height: '100%' }}>
+    <Container sx={{ height: '100%' }}>
       <FirstRow />
       <SecondRow />
       <ThirdRow />

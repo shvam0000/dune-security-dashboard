@@ -3,6 +3,7 @@ import ReactFlow, { Background, Position } from 'reactflow';
 import CustomEdge from './custom-edge';
 import 'reactflow/dist/style.css';
 import { Box, Typography } from '@mui/material';
+import { Heading } from '../shared';
 
 const userInteractions = {
   links_clicked: 2735,
@@ -196,9 +197,7 @@ const edges = [
 
 const SecondRow = () => (
   <Box>
-    <Typography variant="h6" gutterBottom sx={{ pl: 2, color: 'white' }}>
-      User Interaction
-    </Typography>
+    <Heading heading="User Interactions" />
     <Box
       sx={{
         height: 600,

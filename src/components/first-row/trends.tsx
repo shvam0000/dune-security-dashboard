@@ -1,6 +1,5 @@
 import {
   Box,
-  Card,
   CardContent,
   Container,
   List,
@@ -20,6 +19,8 @@ import {
   ReferenceLine,
 } from 'recharts';
 import { dashboardData } from '../../data/Dashboard_Dune_Security';
+
+import { Heading } from '../shared';
 
 interface CustomTooltipProps {
   active?: boolean;
@@ -73,7 +74,7 @@ const CustomTooltip: React.FC<CustomTooltipProps> = ({
 
 const Trends = () => {
   const [count, setCount] = useState(1);
-  const [boxHeight, setBoxHeight] = useState(380);
+  const [boxHeight, setBoxHeight] = useState(350);
   const chartRef = useRef<HTMLDivElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
 
@@ -95,9 +96,7 @@ const Trends = () => {
           display: 'flex',
           flexDirection: 'column',
         }}>
-        <Typography variant="h6" gutterBottom sx={{ pl: 2 }}>
-          Trends
-        </Typography>
+        <Heading heading="Trends" />
         <CardContent
           sx={{
             display: 'flex',
@@ -112,8 +111,10 @@ const Trends = () => {
               border: '1px solid #00b0f0',
               borderRadius: 2,
               p: 2,
+              color: '#fff',
             }}
             ref={chartRef}>
+            <Typography gutterBottom>RISK SCORE OVER TIME</Typography>
             <LineChart
               width={600}
               height={boxHeight - 48}
@@ -165,7 +166,7 @@ const Trends = () => {
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'space-between',
-              height: boxHeight,
+              height: boxHeight + 18,
             }}
             ref={listRef}>
             <Box sx={{ bgcolor: 'transparent' }}>

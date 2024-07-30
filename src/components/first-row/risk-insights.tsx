@@ -1,14 +1,12 @@
 import { Box, Card, CardContent, Typography } from '@mui/material';
+import { Heading } from '../shared';
 
 const RiskInsights = () => {
   return (
     <Box>
-      <Typography variant="h6" sx={{ color: 'white', pl: 2 }} gutterBottom>
-        Risk Insights
-      </Typography>
-      <Card
+      <Heading heading="Risk Insights" />
+      <Box
         sx={{
-          bgcolor: '#333',
           color: '#fff',
           borderRadius: 3,
           position: 'relative',
@@ -81,7 +79,7 @@ const RiskInsights = () => {
             </Box>
           </Box>
         </CardContent>
-      </Card>
+      </Box>
     </Box>
   );
 };

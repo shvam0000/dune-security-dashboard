@@ -4,6 +4,7 @@ import { dashboardData } from '../../data/Dashboard_Dune_Security';
 import { Box, Typography, Grid } from '@mui/material';
 import { Pie, Line } from 'react-chartjs-2';
 import { Chart, registerables } from 'chart.js';
+import { Heading } from '../shared';
 Chart.register(...registerables);
 
 const Dashboard = () => {
@@ -123,9 +124,7 @@ const Dashboard = () => {
     <Box sx={{ color: '#fff', py: 2 }}>
       <Grid container spacing={4}>
         <Grid item xs={4}>
-          <Typography variant="h6" gutterBottom sx={{ color: '#fff' }}>
-            Risk Categories
-          </Typography>
+          <Heading heading="Risk Categories" />
           <Box
             sx={{
               textAlign: 'center',
@@ -147,9 +146,7 @@ const Dashboard = () => {
           </Box>
         </Grid>
         <Grid item xs={8}>
-          <Typography variant="h6" gutterBottom>
-            Risk Score Comparison
-          </Typography>
+          <Heading heading="Risk Score Comparison" />
           <Box
             sx={{
               textAlign: 'center',
