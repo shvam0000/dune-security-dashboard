@@ -1,5 +1,6 @@
 import { Box, Typography } from '@mui/material';
 import { RiskBoxProps } from '../../util/props/props';
+import React from 'react';
 
 const RiskBox: React.FC<RiskBoxProps> = ({ title, score, subtitle, label }) => {
   return (
