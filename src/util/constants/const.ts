@@ -1,4 +1,11 @@
 import { Position } from 'reactflow';
+import PrivacyTipOutlinedIcon from '@mui/icons-material/PrivacyTipOutlined';
+import HouseSidingOutlinedIcon from '@mui/icons-material/HouseSidingOutlined';
+import ShieldOutlinedIcon from '@mui/icons-material/ShieldOutlined';
+import LocalHospitalOutlinedIcon from '@mui/icons-material/LocalHospitalOutlined';
+import SecurityOutlinedIcon from '@mui/icons-material/SecurityOutlined';
+import FolderOpenOutlinedIcon from '@mui/icons-material/FolderOpenOutlined';
+import HourglassDisabledOutlinedIcon from '@mui/icons-material/HourglassDisabledOutlined';
 
 export const userInteractions = {
   links_clicked: 2735,
@@ -85,7 +92,7 @@ export const nodes = [
     targetPosition: Position.Left,
     sourcePosition: Position.Right,
     style: {
-      background: '#ffc107',
+      background: '#FFEC77',
       color: '#000',
       padding: 10,
       border: 'none',
@@ -105,7 +112,7 @@ export const nodes = [
     targetPosition: Position.Left,
     sourcePosition: Position.Right,
     style: {
-      background: '#ff9800',
+      background: '#FFB55F',
       color: '#000',
       padding: 10,
       border: 'none',
@@ -122,7 +129,7 @@ export const nodes = [
     position: { x: 850, y: 60 },
     targetPosition: Position.Left,
     style: {
-      background: '#f44336',
+      background: '#FF6D55',
       color: '#000',
       padding: 10,
       border: 'none',
@@ -180,7 +187,7 @@ export const nodes = [
     targetPosition: Position.Left,
     sourcePosition: Position.Right,
     style: {
-      background: '#4caf50',
+      background: '#01FF82',
       color: 'black',
       padding: 10,
       border: 'none',
@@ -257,5 +264,43 @@ export const edges = [
     target: '6',
     type: 'custom',
     style: { sourceColor: '#ff9800', targetColor: '#f44336', strokeWidth: 2 },
+  },
+];
+
+export const complianceData = [
+  {
+    icon: PrivacyTipOutlinedIcon,
+    title: 'GDPR',
+    subtitle: '34% of users',
+  },
+  {
+    icon: HouseSidingOutlinedIcon,
+    title: 'GLBA',
+    subtitle: '34% of users',
+  },
+  {
+    icon: ShieldOutlinedIcon,
+    title: 'SOC2 Type 2',
+    subtitle: '34% of users',
+  },
+  {
+    icon: LocalHospitalOutlinedIcon,
+    title: 'HIPAA',
+    subtitle: '34% of users',
+  },
+  {
+    icon: SecurityOutlinedIcon,
+    title: 'ISO 27001',
+    subtitle: '34% of users',
+  },
+  {
+    icon: FolderOpenOutlinedIcon,
+    title: 'NIST',
+    subtitle: '34% of users',
+  },
+  {
+    icon: HourglassDisabledOutlinedIcon,
+    title: 'PCI DSS',
+    subtitle: '34% of users',
   },
 ];
