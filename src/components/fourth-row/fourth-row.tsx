@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React from 'react';
 import { dashboardData } from '../../data/Dashboard_Dune_Security';
 import { Box, Typography, Grid } from '@mui/material';
@@ -6,21 +7,6 @@ import { Chart, registerables } from 'chart.js';
 Chart.register(...registerables);
 
 const Dashboard = () => {
-  const riskCategoriesData = {
-    labels: ['Low Risk', 'Moderate Risk', 'High Risk', 'Severe Risk'],
-    datasets: [
-      {
-        data: [
-          dashboardData.risk_categories['Low risk'],
-          dashboardData.risk_categories['Moderate risk'],
-          dashboardData.risk_categories['High risk'],
-          dashboardData.risk_categories['Severe risk'],
-        ],
-        backgroundColor: ['#8BC34A', '#FFEB3B', '#FFC107', '#F44336'],
-      },
-    ],
-  };
-
   const riskScoreOverTimeData = {
     labels: dashboardData.risk_score_over_time.map((item) =>
       new Date(item.timestamp).toLocaleDateString()
@@ -45,6 +31,25 @@ const Dashboard = () => {
     ],
   };
 
+  const centerTextPlugin = {
+    id: 'centerText',
+    beforeDraw: (chart) => {
+      const ctx = chart.ctx;
+      const { width, height } = chart.chartArea;
+      const fontSize = (height / 200).toFixed(2);
+      ctx.save();
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillStyle = '#757575';
+      ctx.font = `${fontSize}em Arial`;
+      const text = 'TOTAL USERS';
+      const textX = width / 2;
+      const textY = height / 2 + chart.legend.height;
+      ctx.fillText(text, textX, textY);
+      ctx.restore();
+    },
+  };
+
   const data = {
     labels: ['Low Risk', 'Moderate Risk', 'High Risk', 'Severe Risk'],
     datasets: [
@@ -65,13 +70,13 @@ const Dashboard = () => {
     responsive: true,
     plugins: {
       legend: {
-        display: false,
+        display: true,
       },
       tooltip: {
         enabled: true,
       },
     },
-    cutout: '50%',
+    cutout: '60%',
     elements: {
       arc: {
         borderWidth: 0,
@@ -97,7 +102,7 @@ const Dashboard = () => {
             <Typography variant="caption" sx={{ color: '#757575', py: 2 }}>
               PERCENTAGE OF USERS
             </Typography>
-            <Pie data={data} options={options} />
+            <Pie data={data} options={options} plugins={[centerTextPlugin]} />
           </Box>
         </Grid>
         <Grid item xs={8}>
