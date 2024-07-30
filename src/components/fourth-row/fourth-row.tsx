@@ -65,7 +65,7 @@ const Dashboard = () => {
     responsive: true,
     plugins: {
       legend: {
-        display: true,
+        display: false,
         position: 'top',
         labels: {
           color: '#fff',
@@ -87,7 +87,7 @@ const Dashboard = () => {
     responsive: true,
     plugins: {
       legend: {
-        display: true,
+        display: false,
         position: 'top',
         labels: {
           color: '#fff',
@@ -120,7 +120,7 @@ const Dashboard = () => {
   };
 
   return (
-    <Box sx={{ color: '#fff', padding: 2 }}>
+    <Box sx={{ color: '#fff', py: 2 }}>
       <Grid container spacing={4}>
         <Grid item xs={4}>
           <Typography variant="h6" gutterBottom sx={{ color: '#fff' }}>
@@ -132,23 +132,44 @@ const Dashboard = () => {
               padding: 2,
               backgroundColor: '#212121',
               border: '1px solid #424242',
-              borderRadius: 2,
+              borderRadius: 5,
+              height: '85%',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
             }}>
             <Typography variant="caption" sx={{ color: '#757575', py: 2 }}>
               PERCENTAGE OF USERS
             </Typography>
-            <Pie data={data} options={options} plugins={[centerTextPlugin]} />
+            <Box sx={{ height: '100%', display: 'flex', alignItems: 'center' }}>
+              <Pie data={data} options={options} plugins={[centerTextPlugin]} />
+            </Box>
           </Box>
         </Grid>
         <Grid item xs={8}>
           <Typography variant="h6" gutterBottom>
             Risk Score Comparison
           </Typography>
-          <Typography variant="body2">
-            Your risk score is <strong>39 points</strong> higher than average
-          </Typography>
-          <Box sx={{ textAlign: 'center' }}>
-            <Line data={riskScoreOverTimeData} options={lineOptions} />
+          <Box
+            sx={{
+              textAlign: 'center',
+              border: '1px solid #424242',
+              p: 2,
+              borderRadius: 5,
+              backgroundColor: '#212121',
+              height: '85%',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+            }}>
+            <Typography
+              sx={{ px: 2, pb: 1, textAlign: 'left' }}
+              variant="body2">
+              Your risk score is <strong>39 points</strong> higher than average
+            </Typography>
+            <Box sx={{ height: '100%', display: 'flex', alignItems: 'center' }}>
+              <Line data={riskScoreOverTimeData} options={lineOptions} />
+            </Box>
           </Box>
         </Grid>
       </Grid>
