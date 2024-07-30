@@ -28,7 +28,8 @@ const SecondRow = () => (
         borderRadius: 5,
         display: 'flex',
         flexDirection: 'column',
-      }}>
+      }}
+    >
       <Box sx={{ p: 2 }}>
         <Typography sx={{ color: 'white' }} variant="h3">
           {total.toLocaleString()}

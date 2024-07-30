@@ -98,7 +98,8 @@ const FourthRow: React.FC = () => {
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'center',
-            }}>
+            }}
+          >
             <Typography variant="caption" sx={{ color: '#A2A099', py: 2 }}>
               PERCENTAGE OF USERS
             </Typography>
@@ -125,7 +126,8 @@ const FourthRow: React.FC = () => {
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'center',
-            }}>
+            }}
+          >
             <Typography
               sx={{
                 px: 2,
@@ -134,7 +136,8 @@ const FourthRow: React.FC = () => {
                 display: 'flex',
                 color: '#A2A099',
               }}
-              variant="body2">
+              variant="body2"
+            >
               YOUR RISK SCORE IS{' '}
               <Box sx={{ px: 1, color: '#BE331D' }}>
                 <strong> 39 POINTS </strong>

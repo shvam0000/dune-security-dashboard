@@ -37,7 +37,8 @@ const CustomTooltip: React.FC<CustomTooltipProps> = ({ active, payload }) => {
             zIndex: 1,
             minWidth: '50px',
             textAlign: 'center',
-          }}>
+          }}
+        >
           {Math.floor(payload[0].value)}%
         </div>
         <div
@@ -83,14 +84,16 @@ const Trends = () => {
           flex: 1,
           display: 'flex',
           flexDirection: 'column',
-        }}>
+        }}
+      >
         <Heading heading="Trends" />
         <CardContent
           sx={{
             display: 'flex',
             flexDirection: 'row',
             justifyContent: 'space-between',
-          }}>
+          }}
+        >
           <Box
             sx={{
               flex: 1,
@@ -102,17 +105,20 @@ const Trends = () => {
               color: '#fff',
               bgcolor: '#161615',
             }}
-            ref={chartRef}>
+            ref={chartRef}
+          >
             <Typography
               gutterBottom
-              sx={{ fontSize: 14, color: '#A2A099', py: '2px' }}>
+              sx={{ fontSize: 14, color: '#A2A099', py: '2px' }}
+            >
               RISK SCORE OVER TIME
             </Typography>
             <LineChart
               width={600}
               height={boxHeight - 48}
               data={dashboardData.risk_score_over_time}
-              margin={{ top: 5, bottom: 5 }}>
+              margin={{ top: 5, bottom: 5 }}
+            >
               <CartesianGrid horizontal={true} vertical={false} stroke="#555" />
               <XAxis
                 dataKey="timestamp"
@@ -153,7 +159,8 @@ const Trends = () => {
               justifyContent: 'space-between',
               height: boxHeight + 18,
             }}
-            ref={listRef}>
+            ref={listRef}
+          >
             <Box sx={{ bgcolor: 'transparent' }}>
               <Box
                 sx={{
@@ -161,7 +168,8 @@ const Trends = () => {
                   bgcolor: '#161615',
                   py: 2,
                   borderRadius: 5,
-                }}>
+                }}
+              >
                 HIGH RISK AREAS
               </Box>
               <List
@@ -171,7 +179,8 @@ const Trends = () => {
                   position: 'relative',
                   flex: 1,
                   overflowY: 'auto',
-                }}>
+                }}
+              >
                 {dashboardData.high_risk_areas.map((area, index) => (
                   <ListItem
                     sx={{
@@ -179,7 +188,8 @@ const Trends = () => {
                       justifyContent: 'evenly',
                       bgcolor: '#161615',
                     }}
-                    key={area.name}>
+                    key={area.name}
+                  >
                     <Typography
                       sx={{
                         bgcolor: 'transparent',
@@ -187,7 +197,8 @@ const Trends = () => {
                         mr: 3,
                         ml: 2,
                         px: 1,
-                      }}>
+                      }}
+                    >
                       {index + 1}
                     </Typography>
                     <Typography sx={{ bgcolor: 'transparent' }}>
@@ -202,7 +213,8 @@ const Trends = () => {
                 bgcolor: 'transparent',
                 color: '#00b0f0',
                 p: 2,
-              }}>
+              }}
+            >
               Learn about risk areas
             </Typography>
           </Box>

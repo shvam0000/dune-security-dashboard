@@ -1,0 +1,15 @@
+{
+  "extends": ["eslint:recommended", "prettier", "next/core-web-vitals"],
+  "plugins": ["prettier"],
+  "parser": "@typescript-eslint/parser",
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "jest": true,
+  },
+  "rules": {
+    "prettier/prettier": ["error", { "endOfLine": "auto" }],
+    "react-hooks/exhaustive-deps": "warn",
+    "no-unused-vars": "warn",
+  },
+}

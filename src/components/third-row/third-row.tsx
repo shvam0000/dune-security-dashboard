@@ -15,10 +15,12 @@ const ThirdRow: React.FC = () => {
           backgroundColor: '#161615',
           border: '1px solid #424242',
           borderRadius: 5,
-        }}>
+        }}
+      >
         <Typography
           gutterBottom
-          sx={{ pl: 2, pb: 2, color: '#A2A099', fontSize: 16 }}>
+          sx={{ pl: 2, pb: 2, color: '#A2A099', fontSize: 16 }}
+        >
           TRAINING COMPLETION STATUS
         </Typography>
         <Grid container spacing={2}>
@@ -39,7 +41,7 @@ const ThirdRow: React.FC = () => {
             <Box sx={{ color: '#fff' }}>
               <BarChart
                 sx={{
-                  'color': 'white',
+                  color: 'white',
                   '& .MuiChartsAxis-label': {
                     fill: 'white',
                   },

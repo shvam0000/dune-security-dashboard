@@ -15,7 +15,8 @@ const RiskBox: React.FC<RiskBoxProps> = ({ title, score, subtitle, label }) => {
         textAlign: 'center',
         position: 'relative',
         overflow: 'hidden',
-      }}>
+      }}
+    >
       <Box
         sx={{
           content: '""',
@@ -48,7 +49,8 @@ const RiskBox: React.FC<RiskBoxProps> = ({ title, score, subtitle, label }) => {
           left: 0,
           right: 0,
           bottom: 0,
-        }}>
+        }}
+      >
         {label}
       </Box>
     </Box>

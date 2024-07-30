@@ -20,7 +20,8 @@ const ComplianceItem: React.FC<ComplianceItemProps> = ({
           border: '1px solid #A2A099',
           borderRadius: 2,
           mr: 1,
-        }}>
+        }}
+      >
         <Icon sx={{ fontSize: 40, color: '#01FF82' }} />
       </Box>
       <Box>
