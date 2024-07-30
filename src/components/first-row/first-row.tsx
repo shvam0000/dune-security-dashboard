@@ -1,5 +1,5 @@
 import { Box } from '@mui/material';
-import { RiskInsights, Trends } from './first-row';
+import { RiskInsights, Trends } from '.';
 
 const FirstRow = () => {
   return (
