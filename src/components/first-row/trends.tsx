@@ -18,7 +18,7 @@ import {
   Line,
   ReferenceLine,
 } from 'recharts';
-import { dashboardData } from '../../data/Dashboard_Dune_Security';
+import { dashboardData } from '../../util/data/Dashboard_Dune_Security';
 
 import { Heading } from '../shared';
 

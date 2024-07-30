@@ -1,6 +1,6 @@
 //@ts-nocheck
 import React from 'react';
-import { dashboardData } from '../../data/Dashboard_Dune_Security';
+import { dashboardData } from '../../util/data/Dashboard_Dune_Security';
 import { Box, Typography, Grid } from '@mui/material';
 import { Pie, Line } from 'react-chartjs-2';
 import { Chart, registerables } from 'chart.js';

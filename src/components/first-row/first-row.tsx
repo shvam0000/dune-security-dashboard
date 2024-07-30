@@ -3,7 +3,7 @@ import { RiskInsights, Trends } from '.';
 
 const FirstRow = () => {
   return (
-    <Box sx={{ display: 'flex', py: 5, alignItems: 'flex-start' }}>
+    <Box sx={{ display: 'flex', pt: 5, alignItems: 'flex-start' }}>
       <RiskInsights />
       <Trends />
     </Box>
