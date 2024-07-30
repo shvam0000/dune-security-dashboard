@@ -1,10 +1,10 @@
-# Roommate Tinder
+# Security Dashboard
 
 ### Live Demo - https://dune-security-dashboard.vercel.app/
 
 ## 💡 Project Description
 
-Dune Security Dashboard
+Security Dashboard
 
 ## 📺 Preview
 
